@@ -1,0 +1,184 @@
+
+{% extends 'portfolio/base.html' %}
+
+
+{% block content%}
+{% load static %}
+
+<style>
+.main_wrap .row{
+  margin-left:0px;
+  margin-right:0px;
+}
+</style>
+
+<head>
+<title>Scott Maxwell - Portfolio</title>
+</head>
+
+<!-- For TinyMCE for AboutMe -->
+<link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+
+<body style="background-color:#828C83">
+	<div class='row m-0'>
+
+		<div class="container main_wrap" style="overflow: hidden;">
+
+			<!-- Header -->
+			<div class="row main_wrap" style="overflow: hidden; margin-top:60px;">
+				 <div class="col-md-12 p-3 mb-2 bg-dark text-light" style="border-radius:10px;">
+					<img src="{{ profilepic.image.url }}" style="float:left; margin-right:20px; margin-bottom: 1px; margin-left:20%;" alt="..." class="rounded-circle" width='200px' height='200px'><br>
+
+					<h1 style="display: inline-block">Scott Maxwell</h1>
+					<h2 style="">Data Scientist | Software Engineer</h2>
+
+
+					<span class="">
+						<!-- Link github-->
+						<a href="https://www.github.com/scott-w-maxwell" target = '_blank'><i class="icon-github icon-2x" style="margin-right: 10px; color:#38362e;" ></i></a>
+
+						<!-- Link to Linkedin -->
+						<a href="https://www.linkedin.com/in/scott-w-maxwell/" target = '_blank'><i class="icon-linkedin icon-2x" style="margin-right: 10px; color:#38362e;"></i></a>
+						
+						<!-- Link to StackOverflow -->
+<!-- 						<a href="https://stackoverflow.com/users/9561154/smaxwell" target = '_blank'><i class="icon-stackexchange icon-2x" style="margin-right: 10px; color:#38362e;"></i></a> -->
+
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Buffer to center content -->
+		<div class='col-sm-2 main_wrap' style="overflow: hidden;">
+		</div>
+
+
+		<!-- Centered Content -->
+		<div class='col-sm-5' style="overflow: hidden;">
+
+			<!-- About me -->
+			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; color:black;">
+				<h2>About me</h2>
+				<p>{{ about_me.content |safe }}<p>
+			</div>
+
+			<!-- Projects -->
+			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden; ">
+				<h2>Recent Projects</h2>
+				{% for project in projectposts %}
+					
+					<hr style="clear:left;">
+							{% if project.image %}
+								
+								<img src = "{{ project.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;">
+								
+							{% endif %}
+
+
+							<div style="text-align: left; position: relative; margin-left:80px; overflow-y: auto; overflow-wrap: break-word; max-width: 99%; text-align: left;">
+							{% if project.website_link %}	
+							<p><a href="{{project.website_link}}" target="_blank" style="color:white;">{{ project.title }}</a> - <small>{{ project.description }}</small></p>
+							{% else %}
+							<p><a href="{{ request.path }}projects/projectpost/{{ project.id }}" target = '_blank' style="color:white;">{{ project.title }}</a> - <small>{{project.description}}</small><p>
+							{% endif %}
+
+
+							{% if project.code_link %}
+								<a href="{{project.code_link}}" target="_blank" style="color:#47754d;"><p><i class="icon-code-fork"></i> Project Code</p></a>
+							{% endif %}
+						</div>
+
+				{% endfor %}
+
+					
+				<hr>
+				<small><a href="{% url 'projects' %}" style="color:#A7A3A3;" target = '_blank'>View more projects here</a></small>
+			</div>
+
+
+			<!-- Work Experience -->
+			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
+				<h2>Work Experience</h2>
+				{% for wrkexp in workexperience %}
+					<hr >
+					{% if wrkexp.link %}
+						<h5><a href="{{ wrkexp.link }}" target = '_blank'>{{ wrkexp.title }}</a></h5>
+					{% else %}
+						<h5>{{ wrkexp.title }}</h5>
+					{% endif %}
+					<small>{{wrkexp.location}}</small><br>
+					<small style="color:#838080;">{{wrkexp.start_date}} - {{wrkexp.end_date}} ({{wrkexp.total_time}})</small>
+
+					<p>{{ wrkexp.content |safe }}</p>
+				{% endfor %}
+			</div>
+
+			<!-- Blog -->
+			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
+				<h2>Articles I have written</h2>
+				{% for blog in blogposts %}
+					<hr >
+					{% if blog.link %}
+					<p><a href="{{ blog.link }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{blog.date_posted}}</small></p>
+					{% else %}
+					<p><a href="{{ request.path }}blog/blogpost/{{ blog.id }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{blog.date_posted}}</small></p>
+					{% endif %}
+				{% endfor %}
+				<hr >
+				<small style="color:#A7A3A3;"><a href="{% url 'blog' %}" style="color:#A7A3A3;" target = '_blank'>View more posts here</a></small>
+			</div>
+
+		</div>
+
+
+
+		<!-- Far Right Content -->
+		<div class='col-sm-3'>
+			
+			<!-- contact information -->
+			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
+				<p><i class="icon-map-marker" style="color:#A9A8A8;"></i> Florence, AZ</p>
+				<p style="overflow-wrap: break-word;"><i class="icon-envelope" style="color:#A9A8A8;"></i>  <a href="mailto:scottwillardmaxwell@protonmail.com" style="color:white;">scottwillardmaxwell@protonmail.com</a></p>
+				<p><i class="icon-phone" style="color:#A9A8A8;"></i> 480-274-8367</p>
+			</div>
+
+			<!-- Skills -->
+			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
+				
+				<b>Skills:</b>
+				<ul>
+					{% for skill in skills%}
+					<li>{{ skill.title }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+
+
+			<!-- Education/Certifications -->
+			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
+				
+				<b>Education & Certifications:</b>
+				<ul>
+					{% for cert in certifications%}
+						<hr >
+						{% if cert.link %}
+							<p><a href="{{cert.link}}" target="_blank" style="color:white;">{{cert.title}}</a>   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+						{% else %}
+							<p>{{ cert.title }}   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+						{% endif%}
+						<small>{{cert.location}}</small><br>
+					{% endfor %}
+				</ul>
+			</div>
+
+
+		</div>
+
+
+	</div>
+</body>
+
+
+<script src="{% static 'tinymce/js/prism.js' %}"></script>
+
+{% endblock content %}

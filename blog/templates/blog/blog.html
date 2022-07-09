@@ -1,0 +1,45 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<style>
+.main{
+    min-height: 90vh;
+}
+</style>
+
+<head>
+{% load static %}
+<title>Scott Maxwell - Blogs</title>
+</head>
+
+<body style="background-color:#828C83;">
+    <div class='row m-0'>
+
+        <!-- Empty Space -->
+        <div class="col">
+        </div>
+
+        <div class="col-sm-8 p-3 mb-2 bg-dark text-light p-3 main" style="margin-top:60px; border-radius:10px;">
+            <br >
+            <h2>Blog Posts</h2>
+            {% for post in posts %}
+                <hr >
+                {% if post.link %}
+                <h5><a href="{{ post.link }}" style="color:white;">{{post.title|safe}}</a></h5>
+                {% else %}
+                <h5><a href="{{ request.path }}blogpost/{{ post.id }}" style="color:white;">{{post.title|safe}}</a></h5>
+                {% endif %}
+                <small>{{post.date_posted}} MST</small>
+            {% endfor %}
+        </div>
+
+
+        <!-- Empty Space -->
+        <div class="col">
+        </div>
+
+    </div>
+</body>
+
+{% endblock %}

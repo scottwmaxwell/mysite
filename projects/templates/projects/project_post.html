@@ -1,0 +1,54 @@
+{% extends 'portfolio/base.html' %}
+
+
+{% block content %}
+
+<style>
+.main{
+    min-height: 90vh;
+}
+</style>
+
+<head>
+{% load static %}
+<link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+<title>Scott Maxwell - {{project.title}}</title>
+</head>
+
+<body style="background-color:#828C83">
+    <div class='row m-0'>
+
+        <div class="col">
+        </div>
+
+        <div class="col-sm-8 p-3 mb-2 bg-dark text-light main" style="margin-top:60px; border-radius:10px;">
+
+
+            <br>
+            <h1 class="text-light"> {{project.title|safe}} - {{project.description|safe}}</h1>
+            
+
+            <br>
+            {% if project.code_link %}
+                <a href="{{project.code_link}}" target="_blank" style="color:#47754d;"><p><i class="icon-code"></i> See the code here</p></a>
+            {% endif %}
+
+
+            <small>{{ project.date_posted }} MST</small>
+
+
+            <p> {{project.content|safe}}  </p>
+            <br>
+            <br>
+            <a href="{% url 'projects' %}" style="float:left;"><i class="icon-arrow-left"></i> Back to projects list</a>
+
+        </div>
+
+        <div class="col">
+        </div>
+
+</body>
+
+<script src="{% static 'tinymce/js/prism.js' %}"></script>
+
+{% endblock %}

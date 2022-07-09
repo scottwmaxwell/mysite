@@ -1,0 +1,39 @@
+{% extends 'portfolio/base.html' %}
+
+
+{% block content %}
+
+<head>
+{% load static %}
+</head>
+
+<body style="background-color:#d3d9e3">
+    <div class='row'>
+
+        <div class="col">
+        </div>
+
+        <div class="col-sm-6 p-3 mb-2 bg-light text-dark">
+            <br >
+            <h2>Projects</h2>
+            {% for post in projects %}
+                <hr >
+		{% if post.website_link %}		
+<h3> <a href="{{ request.path }}projectpost/{{ post.id }}">{{post.title|safe}}</a></h3>
+                <small>{{post.date_posted}}</small>
+
+		{% else %}
+                <h3> <a href="{{ request.path }}projectpost/{{ post.id }}">{{post.title|safe}}</a></h3>
+                <small>{{post.date_posted}}</small>
+
+
+            {% endfor %}
+        </div>
+
+        <div class="col">
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

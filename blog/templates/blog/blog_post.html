@@ -1,0 +1,42 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<style>
+.main{
+    min-height: 90vh;
+}
+</style>
+
+
+<head>
+{% load static %}
+<link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+<title>Scott Maxwell - {{text.title}}</title>
+</head>
+
+<body style="background-color:#828C83">
+    <div class='row m-0'>
+
+        <div class="col">
+        </div>
+
+        <div class="col-sm-8 p-3 mb-2 bg-dark text-light main" style="margin-top:60px; border-radius:10px;">
+            <br >
+            <h2 style="color:white;"> {{text.title|safe}} </h2>
+            <small>{{text.date_posted}} MST</small>
+            <p> {{text.content|safe}}  </p>
+
+            <br>
+            <a href="{% url 'blog' %}" style="float:left;"><i class="icon-arrow-left"></i> Back to blog posts</a>
+        </div>
+
+        <div class="col">
+        </div>
+
+
+</body>
+<script src="{% static 'tinymce/js/prism.js' %}"></script>
+
+
+{% endblock %}
