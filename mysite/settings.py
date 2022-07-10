@@ -13,7 +13,7 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURIFTY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['scottwmaxwell.com', '45.79.79.159']
+ALLOWED_HOSTS = ['scottwmaxwell.com', 'www.scottwmaxwell.com'', '45.79.79.159']
 
 
 # Application definition
