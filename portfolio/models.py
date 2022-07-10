@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 class AboutMe(models.Model):
 	content = models.TextField(blank=True)
@@ -22,7 +23,7 @@ class Skills(models.Model):
 class WorkExperience(models.Model):
 	title = models.CharField(max_length=100, unique=True)
 	link = models.CharField(max_length=200, blank=True)
-	location = models.CharField(max_length=100, unique=False, blank=True)
+	location = models.CharField(max_length=100, unique=False, blank=True,  default=uuid.uuid4)
 	start_date = models.CharField(max_length=200, blank=True)
 	end_date = models.CharField(max_length=200, blank=True)
 	total_time = models.CharField(max_length=200, blank=True)
