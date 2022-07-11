@@ -20,7 +20,7 @@ class Skills(models.Model):
 		return str(self.title)
 
 class WorkExperience(models.Model):
-	title = models.CharField(max_length=100, unique=True)
+	title = models.CharField(max_length=100, unique=False)
 	link = models.CharField(max_length=200, blank=True)
 	location = models.CharField(max_length=100, unique=False)
 	start_date = models.CharField(max_length=200, blank=True)
