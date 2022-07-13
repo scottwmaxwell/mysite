@@ -1,6 +1,7 @@
 from django.db import models
 
 class AboutMe(models.Model):
+	title = models.CharField(default="About Me", max_length=100, unique=False)
 	content = models.TextField(blank=True)
 
 class Certifications(models.Model):

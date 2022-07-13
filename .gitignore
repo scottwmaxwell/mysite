@@ -3,3 +3,4 @@ Pipfile
 /media
 Pipfile.lock
 .DS_Store
+settings.py

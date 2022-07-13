@@ -2,18 +2,18 @@ from pathlib import Path
 import os
 import json
 
-with open('/etc/config.json') as config_file:
-    config = json.load(config_file)
+# with open('/etc/config.json') as config_file:
+#     config = json.load(config_file)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = "test"
 
 # SECURIFTY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['scottwmaxwell.com', 'www.scottwmaxwell.com', '45.79.79.159']
+ALLOWED_HOSTS = ['127.0.0.1', 'scottwmaxwell.com', 'www.scottwmaxwell.com', '45.79.79.159']
 
 
 # Application definition

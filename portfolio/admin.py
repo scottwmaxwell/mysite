@@ -6,10 +6,13 @@ from tinymce.widgets import TinyMCE
 from .models import AboutMe, Certifications, Skills, WorkExperience, ProfilePic, WebsiteIcon
 
 class textEditorAdmin(admin.ModelAdmin):
-   list_display = ["content"]
+   list_display = ["title"]
    formfield_overrides = {
    models.TextField: {'widget': TinyMCE()}
    }
+
+class testAdmin(admin.ModelAdmin):
+   list_display=["title"]
 
 # Use TinyMCE Editor
 admin.site.register(AboutMe, textEditorAdmin)
