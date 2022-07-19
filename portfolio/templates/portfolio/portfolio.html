@@ -29,8 +29,8 @@
 				 <div class="col-md-12 p-3 mb-2 bg-dark text-light" style="border-radius:10px;">
 					<img src="{{ profilepic.image.url }}" style="float:left; margin-right:20px; margin-bottom: 1px; margin-left:20%;" alt="..." class="rounded-circle" width='200px' height='200px'><br>
 
-					<h1 style="display: inline-block">{% about_me.full_name %}</h1>
-					<h2 style="">{% about_me.title %}</h2>
+					<h1 style="display: inline-block">{{ about_me.full_name }}</h1>
+					<h2 style="">{{ about_me.title }}</h2>
 
 
 					<span class="">
@@ -137,9 +137,9 @@
 			
 			<!-- contact information -->
 			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
-				<p><i class="icon-map-marker" style="color:#A9A8A8;"></i> {% about_me.location %}</p>
-				<p style="overflow-wrap: break-word;"><i class="icon-envelope" style="color:#A9A8A8;"></i>  <a href="mailto:scottwillardmaxwell@protonmail.com" style="color:white;">{% about_me.email %}</a></p>
-				<p><i class="icon-phone" style="color:#A9A8A8;"></i> {% about_me.phone %}</p>
+				<p><i class="icon-map-marker" style="color:#A9A8A8;"></i> {{ about_me.location }}</p>
+				<p style="overflow-wrap: break-word;"><i class="icon-envelope" style="color:#A9A8A8;"></i>  <a href="mailto:scottwillardmaxwell@protonmail.com" style="color:white;">{{ about_me.email }}</a></p>
+				<p><i class="icon-phone" style="color:#A9A8A8;"></i> {{ about_me.phone }}</p>
 			</div>
 
 			<!-- Skills -->
