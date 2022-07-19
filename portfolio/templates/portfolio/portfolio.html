@@ -102,7 +102,7 @@
 				{% for wrkexp in workexperience %}
 					<hr >
 					{% if wrkexp.link %}
-						<h5><a href="{{ wrkexp.link }}" target = '_blank'>{{ wrkexp.title }}</a></h5>
+						<h5><a href="{{ wrkexp.link }}" style="color:white;" target = '_blank'>{{ wrkexp.title }}</a></h5>
 					{% else %}
 						<h5>{{ wrkexp.title }}</h5>
 					{% endif %}
@@ -156,15 +156,34 @@
 
 			<!-- Education/Certifications -->
 			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
-				
+
 				<b>Education & Certifications:</b>
 				<ul>
 					{% for cert in certifications%}
-						<hr >
+						
+						<hr style="clear:left;">
+
+						<!-- If link is included -->
 						{% if cert.link %}
+
+							<!-- Create Link for image if image exists -->
+							{% if cert.image %}
+								<a href="{{cert.link}}" target="_blank"><img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;"></a>
+							{% endif %}
+
+							<!-- Create link for Title -->
 							<p><a href="{{cert.link}}" target="_blank" style="color:white;">{{cert.title}}</a>   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+						
+						<!-- There is no link -->
 						{% else %}
+							
+						  <!-- Display image if it exists -->
+							{% if cert.image %}
+								<img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;">
+							{% endif %}
+
 							<p>{{ cert.title }}   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+						
 						{% endif%}
 						<small>{{cert.location}}</small><br>
 					{% endfor %}

@@ -14,6 +14,7 @@ class Certification(models.Model):
 	location = models.CharField(max_length=100, blank=True)
 	link = models.CharField(max_length=200, blank=True)
 	date_acheived = models.CharField(max_length=200, blank=True)
+	image = models.ImageField(upload_to='certification_pics', blank=True)
 
 	def __str__(self):
 	   return str(self.title)
