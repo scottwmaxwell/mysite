@@ -5,8 +5,8 @@ from blog.models import blogpost
 
 # For Portfolio
 from .models import AboutMe
-from .models import Certifications
-from .models import Skills
+from .models import Certification
+from .models import Skill
 from .models import WorkExperience
 from .models import ProfilePic
 from .models import WebsiteIcon
@@ -23,10 +23,10 @@ def portfolio(request):
 	about_me = AboutMe.objects.all()[0]
 
 	# Get Certifications
-	certifications = Certifications.objects.all()
+	certifications = Certification.objects.all()
 
 	# Get Skills
-	skills = Skills.objects.all()
+	skills = Skill.objects.all()
 
 	# Get WorkExperience
 	workexperience = WorkExperience.objects.all()
