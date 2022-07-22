@@ -26,13 +26,13 @@ class Skill(models.Model):
 		return str(self.title)
 
 class WorkExperience(models.Model):
-	title = models.CharField(max_length=100, unique=False)
+	title = models.CharField(max_length=100, unique=True, primary_key=True)
 	link = models.CharField(max_length=200, blank=True)
 	location = models.CharField(max_length=100, unique=False)
 	start_date = models.CharField(max_length=200, blank=True)
 	end_date = models.CharField(max_length=200, blank=True)
 	total_time = models.CharField(max_length=200, blank=True)
-	content = models.TextField(blank=False, primary_key=True)
+	content = models.TextField(blank=False)
 
 	def __str__(self):
 		return str(self.title)
