@@ -7,9 +7,9 @@ class AboutMe(models.Model):
 	email = models.CharField(default="email@email.com", max_length=100, unique=False)
 	location = models.CharField(default="495 Your address here", max_length=100, unique=False)
 	content = models.TextField(blank=True)
-	profile_pic = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
-	resume = models.FileField(upload_to='resumes', blank=True)
-	work_experience = models.BooleanField(default = True)
+	# profile_pic = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
+	# resume = models.FileField(upload_to='resumes', blank=True)
+	# work_experience = models.BooleanField(default=True)
 
 class Certification(models.Model):
 	title = models.CharField(max_length=100, unique=True)
