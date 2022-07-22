@@ -28,7 +28,7 @@
 			<!-- Header -->
 			<div class="row main_wrap" style="overflow: hidden; margin-top:60px;">
 				 <div class="col-md-12 p-3 mb-2 bg-dark text-light" style="border-radius:10px;">
-					<img src="{{ profilepic.image.url }}" style="float:left; margin-right:20px; margin-bottom: 1px; margin-left:20%;" alt="..." class="rounded-circle" width='200px' height='200px'><br>
+					<img src="{{ about_me.profile_pic.url }}" style="float:left; margin-right:20px; margin-bottom: 1px; margin-left:20%;" alt="..." class="rounded-circle" width='200px' height='200px'><br>
 
 					<h1 style="display: inline-block">{{ about_me.full_name }}</h1>
 					<h2 style="">{{ about_me.title }}</h2>
@@ -96,22 +96,24 @@
 			</div>
 
 
-			<!-- Work Experience -->
-			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
-				<h2>Work Experience</h2>
-				{% for wrkexp in workexperience %}
-					<hr >
-					{% if wrkexp.link %}
-						<h5><a href="{{ wrkexp.link }}" style="color:white;" target = '_blank'>{{ wrkexp.title }}</a></h5>
-					{% else %}
-						<h5>{{ wrkexp.title }}</h5>
-					{% endif %}
-					<small>{{wrkexp.location}}</small><br>
-					<small style="color:#838080;">{{wrkexp.start_date}} - {{wrkexp.end_date}} ({{wrkexp.total_time}})</small>
+			{% if about_me.work_experience %}
+				<!-- Work Experience -->
+				<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
+					<h2>Work Experience</h2>
+					{% for wrkexp in workexperience %}
+						<hr >
+						{% if wrkexp.link %}
+							<h5><a href="{{ wrkexp.link }}" style="color:white;" target = '_blank'>{{ wrkexp.title }}</a></h5>
+						{% else %}
+							<h5>{{ wrkexp.title }}</h5>
+						{% endif %}
+						<small>{{wrkexp.location}}</small><br>
+						<small style="color:#838080;">{{wrkexp.start_date}} - {{wrkexp.end_date}} ({{wrkexp.total_time}})</small>
 
-					<p>{{ wrkexp.content |safe }}</p>
-				{% endfor %}
-			</div>
+						<p>{{ wrkexp.content |safe }}</p>
+					{% endfor %}
+				</div>
+			{% endif %}
 
 			<!-- Blog -->
 			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
@@ -135,11 +137,12 @@
 		<!-- Far Right Content -->
 		<div class='col-lg-3'>
 			
-			<!-- contact information -->
+			<!-- contact information + resume -->
 			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
 				<p><i class="icon-map-marker" style="color:#A9A8A8;"></i> {{ about_me.location }}</p>
 				<p style="overflow-wrap: break-word;"><i class="icon-envelope" style="color:#A9A8A8;"></i>  <a href="mailto:scottwillardmaxwell@protonmail.com" style="color:white;">{{ about_me.email }}</a></p>
 				<p><i class="icon-phone" style="color:#A9A8A8;"></i> {{ about_me.phone }}</p>
+				<p><i class="icon-file" style="color:#A9A8A8;"></i> <a href="{{ about_me.resume.url }}" target="_blank" style="color:white;">Resume</a></p>
 			</div>
 
 			<!-- Skills -->

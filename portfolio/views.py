@@ -8,7 +8,6 @@ from .models import AboutMe
 from .models import Certification
 from .models import Skill
 from .models import WorkExperience
-from .models import ProfilePic
 from .models import WebsiteIcon
 
 def portfolio(request):
@@ -31,9 +30,6 @@ def portfolio(request):
 	# Get WorkExperience
 	workexperience = WorkExperience.objects.all()[::-1]
 
-	# Get ProfilePic
-	profilepic = ProfilePic.objects.all()[0]
-
 	# Get website icon
 	website_icon = WebsiteIcon.objects.all()[0]
 
@@ -44,7 +40,6 @@ def portfolio(request):
 		'certifications': certifications,
 		'skills':         skills,
 		'workexperience': workexperience,
-		'profilepic':     profilepic,
 		'website_icon':	  website_icon,
 	}
 	
