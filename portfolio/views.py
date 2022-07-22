@@ -29,7 +29,7 @@ def portfolio(request):
 	skills = Skill.objects.all()
 
 	# Get WorkExperience
-	workexperience = WorkExperience.objects.all()
+	workexperience = WorkExperience.objects.all()[::-1]
 
 	# Get ProfilePic
 	profilepic = ProfilePic.objects.all()[0]
