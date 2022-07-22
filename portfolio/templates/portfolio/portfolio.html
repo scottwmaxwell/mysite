@@ -6,6 +6,7 @@
 {% load static %}
 
 <style>
+
 .main_wrap .row{
   margin-left:0px;
   margin-right:0px;
@@ -14,7 +15,7 @@
 
 <head>
 <title>Scott Maxwell - Portfolio</title>
-</head>
+</head>	
 
 <!-- For TinyMCE for AboutMe -->
 <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
@@ -32,8 +33,7 @@
 					<h1 style="display: inline-block">{{ about_me.full_name }}</h1>
 					<h2 style="">{{ about_me.title }}</h2>
 
-
-					<span class="">
+					<span>
 						<!-- Link github-->
 						<a href="https://www.github.com/scott-w-maxwell" target = '_blank'><i class="icon-github icon-2x" style="margin-right: 10px; color:#38362e;" ></i></a>
 
@@ -54,7 +54,7 @@
 
 
 		<!-- Centered Content -->
-		<div class='col-sm-5' style="overflow: hidden;">
+		<div class='col-lg-6' style="overflow: hidden;">
 
 			<!-- About me -->
 			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; color:black;">
@@ -75,7 +75,7 @@
 							{% endif %}
 
 
-							<div style="text-align: left; position: relative; margin-left:80px; overflow-y: auto; overflow-wrap: break-word; max-width: 99%; text-align: left;">
+						<div style="text-align: left; position: relative; margin-left:80px; overflow-y: auto; overflow-wrap: break-word; max-width: 99%; text-align: left;">
 							{% if project.website_link %}	
 							<p><a href="{{project.website_link}}" target="_blank" style="color:white;">{{ project.title }}</a> - <small>{{ project.description }}</small></p>
 							{% else %}
@@ -133,7 +133,7 @@
 
 
 		<!-- Far Right Content -->
-		<div class='col-sm-3'>
+		<div class='col-lg-3'>
 			
 			<!-- contact information -->
 			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
@@ -161,12 +161,13 @@
 				<ul>
 					{% for cert in certifications%}
 						
-						<hr style="clear:left;">
+					<hr style="clear:left;">
 
 						<!-- If link is included -->
 						{% if cert.link %}
 
 							<!-- Create Link for image if image exists -->
+							
 							{% if cert.image %}
 								<a href="{{cert.link}}" target="_blank"><img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;"></a>
 							{% endif %}
