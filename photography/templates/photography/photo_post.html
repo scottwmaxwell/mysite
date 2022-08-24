@@ -1,0 +1,51 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<style>
+    .main{
+        min-height: 90vh;
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    img{
+        max-height:70vh;
+        max-width: 70%;
+        animation: fadeIn 1s;
+    }
+</style>
+
+<body style="background-color:#828C83;">
+    <div class='row m-0'>
+
+        <!-- Empty Space -->
+        <div class="col">
+        </div>
+        
+        <div class="col-md-8 p-3 mb-2 text-dark p-3 main" style="margin-top:60px; border-radius:10px; min-width: 00px;">
+            
+            <br >
+                
+                <div style="text-align: center;">
+                    <a href="{{ photo.image.url }}" target="_blank" style="color:#828C83;">
+                        <img src="{{ photo.image.url }}">
+                    </a>
+                    <br>
+                    <small>{{photo.date_posted|date:'m/d/Y' }}</small>
+                    {% if photo.caption%}
+                        <p style="margin-top:8px;">{{photo.caption}}</p>
+                    {% endif %}
+                    <br>
+                    <!-- <a href="{% url 'photography' %}" style="color:#47754d;"><i class="icon-arrow-left"></i> Back to photos</a>     -->
+                </div>
+        </div>
+
+        <!-- Empty Space -->
+        <div class="col">
+        </div>
+
+    </div>
+</body>
+{% endblock %}

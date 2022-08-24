@@ -5,6 +5,8 @@ class AboutMe(models.Model):
 	title = models.CharField(default="Career Title", max_length=100, unique=False)
 	phone = models.CharField(default="Phone Number", max_length=100, unique=False)
 	email = models.CharField(default="email@email.com", max_length=100, unique=False)
+	github_handle = models.CharField(default="mygithubhandle", max_length=100, unique=False)
+	linkedin_url = models.CharField(default='https://linkedin.com/yourlinkedin', max_length=300, unique=False)
 	location = models.CharField(default="495 Your address here", max_length=100, unique=False)
 	content = models.TextField(blank=True)
 	profile_pic = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
@@ -39,9 +41,6 @@ class WorkExperience(models.Model):
 
 	def __str__(self):
 		return str(self.title)
-
-# class ProfilePic(models.Model):
-# 	image = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
 
 class WebsiteIcon(models.Model):
 	image = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
