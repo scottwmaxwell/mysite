@@ -22,7 +22,7 @@ def portfolio(request):
 	about_me = AboutMe.objects.all()[0]
 
 	# Get Certifications
-	certifications = Certification.objects.all()
+	certifications = Certification.objects.all()[::-1]
 
 	# Get Skills
 	skills = Skill.objects.all()
