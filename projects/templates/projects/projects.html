@@ -28,7 +28,7 @@
                 	<hr >
 			{% if post.website_link %}
 				<h5> <a href="{{ post.website_link }}" target="_blank" style="color:white;">{{post.title|safe}}</a></h5>
-                		<small>{{post.date_posted}}</small>
+                		<small>{{post.date_posted|date:'m/d/Y'}}</small>
 
 			{% else %}
                 		<h5> <a href="{{ request.path }}projectpost/{{ post.id }}" style="color:white;">{{post.title|safe}}</a></h5>

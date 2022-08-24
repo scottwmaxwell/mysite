@@ -121,7 +121,7 @@
 				{% for blog in blogposts %}
 					<hr >
 					{% if blog.link %}
-					<p><a href="{{ blog.link }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{blog.date_posted}}</small></p>
+					<p><a href="{{ blog.link }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{ blog.date_posted|date:'m/d/Y' }}</small></p>
 					{% else %}
 					<p><a href="{{ request.path }}blog/blogpost/{{ blog.id }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{blog.date_posted}}</small></p>
 					{% endif %}
