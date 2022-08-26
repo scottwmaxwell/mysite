@@ -37,7 +37,7 @@
                         <img src="{{ photo.image.url }}">
                     </a>
                     <br>
-                    <small>{{photo.date_posted|date:'m/d/Y' }}</small>
+                    <small>{{photo.date_posted|date:'M d, Y' }}</small>
                     {% if photo.caption%}
                         <p style="margin-top:8px;">{{photo.caption}}</p>
                     {% endif %}

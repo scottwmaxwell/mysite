@@ -30,7 +30,7 @@
                 {% else %}
                 <h5><a href="{{ request.path }}blogpost/{{ post.id }}" style="color:white;">{{post.title|safe}}</a></h5>
                 {% endif %}
-                <small>{{ post.date_posted|date:'m/d/Y' }}</small>
+                <small>{{ post.date_posted|date:'M d, Y' }}</small>
             {% endfor %}
         </div>
 
