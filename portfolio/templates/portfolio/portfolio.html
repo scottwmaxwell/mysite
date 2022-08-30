@@ -183,11 +183,11 @@
 							<!-- Create Link for image if image exists -->
 							
 							{% if cert.image %}
-								<a href="{{cert.link}}" target="_blank"><img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;"></a>
+								<a href="{{cert.link}}" target="_blank"><img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style="margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;"></a>
 							{% endif %}
 
 							<!-- Create link for Title -->
-							<p><a href="{{cert.link}}" target="_blank" style="color:white;">{{cert.title}}</a>   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+							<p style="text-align-last:left;"><a href="{{cert.link}}" target="_blank" style="color:white;">{{cert.title}}</a>   <br><small style="color:#A7A3A3;">{{cert.date_acheived}}</small><br><br><small style="color:#828C83;">{{cert.location}}</small><br></p>
 						
 						<!-- There is no link -->
 						{% else %}
@@ -197,10 +197,10 @@
 								<img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;">
 							{% endif %}
 
-							<p>{{ cert.title }}   <small style="color:#A7A3A3;">{{cert.date_acheived}}</small></p>
+							<p style = "text-align-last:left;">{{ cert.title }}   <br><small style="color:#A7A3A3;">{{cert.date_acheived}}</small><br><br><small style="color:#828C83;">{{cert.location}}</small><br></p>
 						
 						{% endif%}
-						<small>{{cert.location}}</small><br>
+						
 					{% endfor %}
 				</ul>
 			</div>
