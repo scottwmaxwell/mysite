@@ -1,0 +1,45 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<style>
+.main{
+    min-height: 90vh;
+}
+
+#add-extension{
+    background-color:#828C83;
+    color: white;
+    width: 900;
+    height: 400;
+    border-radius:20px;
+    border:0;
+}
+</style>
+
+<head>
+{% load static %}
+<title>Scott Maxwell - Projects</title>
+</head>
+
+<body style="background-color:#828C83">
+    <div class='row m-0'>
+
+        <div class="col">
+        </div>
+
+        <div class="col-lg-8 p-3 mb-2 bg-dark text-light main" style="margin-top:60px; border-radius:10px;">
+            <br >
+            <h2>Chrome Extensions</h2>
+            {% for extension in extensions %}
+            <h4>{{ extension.title }}</h4>
+            <button id="add-extension"><a style="color:white;" href="{{ extension.file.url }}">Add to Browser</a></button>
+	    {% endfor %}
+        </div>
+
+        <div class="col">
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

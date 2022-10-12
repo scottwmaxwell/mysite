@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURIFTY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'scottwmaxwell.com', 'www.scottwmaxwell.com', '45.79.79.159']
 
