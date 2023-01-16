@@ -5,214 +5,231 @@
 {% block content%}
 {% load static %}
 
-<style>
-
-.main_wrap .row{
-  margin-left:0px;
-  margin-right:0px;
-}
-
-.github-calendar{
-	max-width:85vw;
-}
-</style>
-
 <head>
 <title>Scott Maxwell - Portfolio</title>
 </head>	
 
-<!-- For TinyMCE for AboutMe -->
-<link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+<body>
 
-<body style="background-color:#828C83">
-	<div class='row m-0'>
+    <!-- Modal that appears for contact me button -->
+    <div class="modal fade" id="contactMeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-light">
 
-		<div class="container main_wrap" style="overflow: hidden;">
+                <!-- I removed the header and footer as I didn't like the white line that was created -->
 
-			<!-- Header -->
-			<div class="row main_wrap" style="overflow: hidden; margin-top:60px;">
-				 <div class="col-md-12 p-3 mb-2 bg-dark text-light" style="border-radius:10px;">
-					<img src="{{ about_me.profile_pic.url }}" style="float:left; margin-right:20px; margin-bottom: 1px; margin-left:20%;" alt="..." class="rounded-circle" width='200px' height='200px'><br>
+                <div class="modal-body">
 
-					<h1 style="display: inline-block">{{ about_me.full_name }}</h1>
-					<h2 style="">{{ about_me.title }}</h2>
+                    <!-- X button -->
+                    <button type="button" style="color:white;" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
 
-					<span>
-						<!-- Link github-->
-						<a href="https://github.com/{{ about_me.github_handle }}" target = '_blank'><i class="icon-github icon-2x" style="margin-right: 10px; color:#38362e;" ></i></a>
+                    <!-- Header -->
+                    <h5 class="modal-title" id="exampleModalLabel">Send Me an Email</h5>
+                    <br>
 
-						<!-- Link to Linkedin -->
-						<a href="{{ about_me.linkedin_url }}" target = '_blank'><i class="icon-linkedin icon-2x" style="margin-right: 10px; color:#38362e;"></i></a>
-						
-						<!-- Link to StackOverflow -->
-<!-- 						<a href="https://stackoverflow.com/users/9561154/smaxwell" target = '_blank'><i class="icon-stackexchange icon-2x" style="margin-right: 10px; color:#38362e;"></i></a> -->
+                    <form class="form" method="POST" action="https://formsubmit.co/{{ about_me.email }}">
 
-					</span>
-				</div>
-			</div>
-		</div>
+                        <div class="form-group">
+                            <input class="form-control noOutline" type="email" id="email" name="email" type="text"
+                                placeholder="Enter Your Email" required>
+                        </div>
 
-		<!-- Buffer to center content -->
-		<div class='col-sm-2 main_wrap' style="overflow: hidden;">
-		</div>
+                        <div class="form-group">
+                            <textarea class="form-control noOutline" id="message" name="message" rows="3" required
+                                placeholder="Enter your message"></textarea>
+                        </div>
+
+                        <button type="submit" id="sendButton" class="btn">Send</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
-		<!-- Centered Content -->
-		<div class='col-lg-6' style="overflow: hidden;">
+    <!-- Large heading to show image, name, title, and social links -->
+    <div class="heading">
 
-			<!-- About me -->
-			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; color:black;">
-				<h2>About me</h2>
-				<p>{{ about_me.content |safe }}<p>
-			</div>
+        <div id="profilepic-id">
+            <img id='profile-pic' src="../images/profile.png" />
+        </div>
 
-			<!-- Projects -->
-			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden; ">
-				<h2>Recent Projects</h2>
+        <div class="info">
+            <!-- My name -->
+            <h1 style="margin-bottom:0; padding-top:30px;">{{ about_me.full_name }}</h1>
+            <!-- My vocation/title -->
+            <p style="margin-top:0;">{{ about_me.title }}</p>
+
+            <!-- Contact button -->
+            <button id="contactmeButton" data-toggle="modal" data-target="#contactMeModal">
+                Contact Me
+                <i class="fa fa-envelope-o" aria-hidden="true" style="padding-left:6px;"></i>
+            </button>
+
+            <!-- Social Links -->
+            <a id="icon" href="https://github.com/{{ about_me.github_handle }}" target="_blank">
+                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+            </a>
+
+            <a id="icon" href="{{ about_me.linkedin_url }}" target="_blank">
+                <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <div id="maincontent">
+        <!-- Div for about me-->
+        <!-- Clears the float attribute from above <img> to be placed under the image -->
+
+        <div id="panel1">
+
+            <!-- About me -->
+            <div id="content">
+                <h2 style="padding-top:10px;">About Me</h2>
+                <p>{{ about_me.content |safe }}</p>
+            </div>
+
+            <!-- Div for work experience -->
+            <div id="content">
+                <h2 style="padding-top:10px;">Work Experience</h2>
+
+                <!-- Work experience title -->
+                <strong id="wrkexp-title">Software Support Technician at <i id="wrkexp-location">Respondus</i></strong>
+                <p id="wrkexp-date" style="color:gray;">July 2020 - Present (2 years)</p>
+
+                <!-- Bullet list of duties/accomplishments -->
+                <ul>
+                    <li>Sustained customers with concise technical support for complex problems</li>
+                    <li>Supported developers in troubleshooting issues</li>
+                    <li>Maintained integrity of product releases through quality assurance</li>
+                    <li>Wrote & published knowledge base articles</li>
+                </ul>
+                <hr />
+
+                <!-- Work experience title -->
+                <strong id="wrkexp-title">Live Chat Technician at <i id="wrkexp-location">Respondus</i></strong>
+                <p id="wrkexp-date" style="color:gray;">August 2019 - July 2020 (1 year)</p>
+
+                <!-- Bullet list of duties/accomplishments -->
+                <ul>
+                    <li>Delivered support for an online exam proctoring service</li>
+                    <li>Corrected webcam, microphone, and network problems</li>
+                    <li>Sustained multiple chats simultaneously</li>
+                </ul>
+            </div>
+
+            <!-- Div for programming projects -->
+            <div id="content">
+                <h2 style="padding-top:10px;">Recent Programming Projects</h2>
+
 				{% for project in projectposts %}
-					
-					<hr style="clear:left;">
-							{% if project.image %}
-								
-								<img src = "{{ project.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;">
-								
-							{% endif %}
 
+                <!-- Project Image -->
+                <img src="{{ project.image }}" height=50 width="50"
+                    style="float:left; border-radius:10px; margin-right:10px;">
 
-						<div style="text-align: left; position: relative; margin-left:80px; overflow-y: auto; overflow-wrap: break-word; max-width: 99%; text-align: left;">
-							{% if project.website_link %}	
-							<p><a href="{{project.website_link}}" target="_blank" style="color:white;">{{ project.title }}</a> - <small>{{ project.description }}</small></p>
-							{% else %}
-							<p><a href="{{ request.path }}projects/projectpost/{{ project.id }}" target = '_blank' style="color:white;">{{ project.title }}</a> - <small>{{project.description}}</small><p>
-							{% endif %}
+                <!-- Project Title -->
+				{% if project.website_link %}
+					<strong><a href="{{ project.website_link }}">{{ project.title  }}<span
+						class="badge bg-secondary">New</span></a></strong><br>
+				{% else %}
 
-
-							{% if project.code_link %}
-								<a href="{{project.code_link}}" target="_blank" style="color:#47754d;"><p><i class="icon-code-fork"></i> Project Code</p></a>
-							{% endif %}
-						</div>
-
-				{% endfor %}
-
-					
-				<hr>
-				<small><a href="{% url 'projects' %}" style="color:#A7A3A3;" target = '_blank'>View more projects here</a></small>
-			</div>
-
-
-			{% if about_me.work_experience %}
-				<!-- Work Experience -->
-				<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
-					<h2>Work Experience</h2>
-					{% for wrkexp in workexperience %}
-						<hr >
-						{% if wrkexp.link %}
-							<h5><a href="{{ wrkexp.link }}" style="color:white;" target = '_blank'>{{ wrkexp.title }}</a></h5>
-						{% else %}
-							<h5>{{ wrkexp.title }}</h5>
-						{% endif %}
-						<small>{{wrkexp.location}}</small><br>
-						<small style="color:#838080;">{{wrkexp.start_date}} - {{wrkexp.end_date}} ({{wrkexp.total_time}})</small>
-
-						<p>{{ wrkexp.content |safe }}</p>
-					{% endfor %}
-				</div>
-			{% endif %}
-
-			<!-- Blog -->
-			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
-				<h2>Articles I have written</h2>
-				{% for blog in blogposts %}
-					<hr >
-					{% if blog.link %}
-					<p><a href="{{ blog.link }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{ blog.date_posted|date:'M d, Y' }}</small></p>
-					{% else %}
-					<p><a href="{{ request.path }}blog/blogpost/{{ blog.id }}" target = '_blank' style="color:white;">{{ blog.title }}</a><small style="color:#838080;"> - {{blog.date_posted|date:'M d, Y'}}</small></p>
-					{% endif %}
-				{% endfor %}
-				<hr >
-				<small style="color:#A7A3A3;"><a href="{% url 'blog' %}" style="color:#A7A3A3;" target = '_blank'>View more posts here</a></small>
-			</div>
-
-			<!-- Github Calendar -->
-			<div class="p-3 mb-2 bg-dark text-light text-dak" style="border-radius:10px; overflow:hidden;">
-				<h2>My Github Activity</h2>
-				<center>
-					<img class="github-calendar" src="http://ghchart.rshah.org/2a4933/scott-w-maxwell" alt="scott-w-maxwell's Github chart" />				
-				</center>
-			</div>
-		</div>
-
-
-
-		<!-- Far Right Content -->
-		<div class='col-lg-3'>
-			
-			<!-- contact information + resume -->
-			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
-				<p><i class="icon-map-marker" style="color:#A9A8A8;"></i> {{ about_me.location }}</p>
-				<p style="overflow-wrap: break-word;"><i class="icon-envelope" style="color:#A9A8A8;"></i>  <a href="mailto:scottwillardmaxwell@protonmail.com" style="color:white;">{{ about_me.email }}</a></p>
-				<p><i class="icon-phone" style="color:#A9A8A8;"></i> {{ about_me.phone }}</p>
-				<p><i class="icon-file" style="color:#A9A8A8;"></i> <a href="{{ about_me.resume.url }}" target="_blank" style="color:white;">Resume</a></p>
-			</div>
-
-			<!-- Skills -->
-			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
+                <strong><a href="{{ request.path }}/post/{{ project.id }}">{{ project.title }}<span
+                            class="badge bg-secondary">New</span></a></strong><br>
 				
-				<b>Skills:</b>
-				<ul>
-					{% for skill in skills%}
-					<li>{{ skill.title }}</li>
-					{% endfor %}
-				</ul>
-			</div>
+				{% endif %}
 
+                <!-- Project description -->
+                {{ project.description }}
+                <hr />
 
-			<!-- Education/Certifications -->
-			<div class="p-3 mb-2 bg-dark text-light" style="border-radius:10px; overflow:hidden;">
+				{% endfor %}
 
-				<b>Education & Certifications:</b>
-				<ul>
-					{% for cert in certifications%}
-						
-					<hr style="clear:left;">
+            <div id="content">
+                <div class="p-3 mb-2" style="border-radius:10px; overflow:hidden;">
+                    <h2>My Github Activity</h2>
+                    <center>
+                        <img class="github-calendar" src="http://ghchart.rshah.org/2a4933/scott-w-maxwell"
+                            alt="scott-w-maxwell's Github chart" />
+                    </center>
+                </div>
+            </div>
 
-						<!-- If link is included -->
-						{% if cert.link %}
-
-							<!-- Create Link for image if image exists -->
-							
-							{% if cert.image %}
-								<a href="{{cert.link}}" target="_blank"><img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style="margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;"></a>
-							{% endif %}
-
-							<!-- Create link for Title -->
-							<p style="text-align-last:left;"><a href="{{cert.link}}" target="_blank" style="color:white;">{{cert.title}}</a>   <br><small style="color:#A7A3A3;">{{cert.date_acheived}}</small><br><br><small style="color:#828C83;">{{cert.location}}</small><br></p>
-						
-						<!-- There is no link -->
-						{% else %}
-							
-						  <!-- Display image if it exists -->
-							{% if cert.image %}
-								<img src = "{{ cert.image.url }}" class="img-rounded" width='60px' height='60px' style=" margin-right:20px; margin-bottom: 10px; border-radius:8px; float:left;">
-							{% endif %}
-
-							<p style = "text-align-last:left;">{{ cert.title }}   <br><small style="color:#A7A3A3;">{{cert.date_acheived}}</small><br><br><small style="color:#828C83;">{{cert.location}}</small><br></p>
-						
-						{% endif%}
+			<div id="content">
+                <div class="p-3 mb-2" style="border-radius:10px; overflow:hidden;">
+                    <h2>Blog Posts</h2>
+					{% for blog in blogs %}
 						
 					{% endfor %}
-				</ul>
-			</div>
+                </div>
+            </div>
+
+    </div>
+
+    <div id="panel2">
+        <div id="content">
+            <h4 style="padding-top:10px;">Education & Certifications</h4>
+
+            <!-- Education Image + Link -->
+            <a href="https://www.gcu.edu/degree-programs/bs-software-development" target="_blank">
+                <img src="../images/GCU Logo.jpeg" height=50 width="50"
+                    style="float:left; border-radius:10px; margin-right:10px;">
+            </a>
+
+            <!-- Name, Date, Cert/Degree -->
+            <strong><a href="https://www.gcu.edu/degree-programs/bs-software-development" target="_blank">Grand
+                    Canyon
+                    University</a> <i id="date" style="color:gray;">2022-2024 (expected)</i></strong><br>
+            <small>BS in Software Development</small>
+
+            <hr />
+
+            <!-- Education Image + Link -->
+            <a href="https://www.bloomtech.com/" target="_blank">
+                <img src="../images/BloomTech Logo.png" height=50 width="50"
+                    style="float:left; border-radius:10px; margin-right:10px;">
+            </a>
+
+            <!-- Name, Date, Cert/Degree -->
+            <strong><a href="https://www.bloomtech.com/" target="_blank">BloomTech</a> <i id="date"
+                    style="color:gray;">2019-2020</i></strong><br>
+            <small>Data Science & Machine Learning</small>
+
+            <hr />
+            <!-- Education Image + Link-->
+            <a href="https://www.cgc.edu/" target="_blank">
+                <img src="../images/CGCC Logo.jpeg" height=50 width="50"
+                    style="float:left; border-radius:10px; margin-right:10px;">
+            </a>
+            <!-- Name, Date, Cert/Degree -->
+            <strong><a href="https://www.cgc.edu/" target="_blank">CGCC</a> <i id="date" style="color:gray;">Aug 9,
+                    2022</i></strong><br>
+            <small>Associate of Science</small>
+        </div>
+
+        <div id="content">
+            <h4 style="padding-top:10px;">Skills</h4>
+            <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>Web Scraping</li>
+                <li>Machine Learning</li>
+                <li>Data Engineering</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>PostgreSQL, MongoDB</li>
+                <li>Linode, AWS</li>
+            </ul>
+        </div>
+    </div>
 
 
-		</div>
+    </div>
 
-
-	</div>
 </body>
-
-
-<script src="{% static 'tinymce/js/prism.js' %}"></script>
 
 {% endblock content %}

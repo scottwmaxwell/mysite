@@ -1,0 +1,171 @@
+/* Set font, text color, and background color of page */
+body{
+    font-family: 'Varela Round';
+    color: white;
+    background-color:#373c4a;
+}
+
+a{
+    color:white;
+    transition: display 2s;
+}
+
+/* Make links opacity change on hover */
+a:hover{
+    opacity:80%;
+    color:white;
+}
+
+#icon{
+    text-decoration: none;
+}
+
+/* Changing Default bootstrap input colors */
+.form-control{
+    background-color:#1d2436 !important;
+    color:white !important;
+}
+
+/* Remove outline around input/textarea */
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+
+/* space links out in heading */
+.heading a{
+    padding-right:20px;
+}
+
+.heading{
+    display: flex;
+    gap:0px;
+    flex-wrap:wrap;
+    margin-top:80px;
+    background-color:#1d2436;
+    border-radius: 10px;
+    height:60wv;
+    color: white;
+    padding-bottom:20px;
+}
+
+/* Make links white */
+.heading a{
+    color:white;
+}
+
+/* Fade in animation used by profile-pic */
+@keyframes fadein {
+    0%{opacity:0%;}
+    100%{opacity:100%;}
+}
+
+#profile-pic{
+    margin-top:20px;
+    max-width:200px;
+    max-height:200px;
+    width:auto;
+    height:auto;
+    border-radius:50%;
+    padding-left:20px;
+    margin-left:20vw;
+}
+
+.info{
+    padding-left:20px;
+}
+
+#contactmeButton{
+    border-radius:5px;
+    background-color:green;
+    border: none;
+    color:white;
+    height:40px;
+    width: 140px;
+    cursor:pointer;
+    font-family: 'Varela Round';
+    transition: background-color 1s;
+    margin-right:20px;
+}
+
+/* email changes color on mouse cursor hover */
+#contactmeButton:hover{
+    background-color: rgb(65, 65, 109);
+}
+
+#sendButton{
+    background-color:green;
+    color: white;
+    transition: background-color 1s;
+}
+
+#sendButton:hover{
+    background-color: rgb(65, 65, 109);
+}
+
+.modal-content{
+    background-color:#373c4a;
+}
+
+/* Flex-box container */
+#maincontent{
+    display:flex;
+    gap:10px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+  /* Individual divs within the flex-box containter */
+#content{
+    background-color:#1d2436;
+    border-radius:10px;
+    padding-left:10px;
+    padding-top:1px;
+    padding-right:10px;
+    padding-bottom:20px;
+    margin-top:10px;
+}
+
+/* Main panel (contains aboutme, projects, experience, etc.) */
+#panel1{
+    max-width:900px;
+}
+
+/* Panel on right side (contains certifications and skills) */
+#panel2{
+    min-width:300px;
+}
+
+/* Removes animations/transitions if browser set */
+@media(prefers-reduced-motion){
+	#email{
+		transition: none;
+	}
+    #profile-pic{
+        animation-delay: none;
+        -webkit-animation-name: none;
+    }
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+    #maincontent {
+      flex-direction: column;
+    }
+
+    #profile-pic{
+        margin-left:16.5vw;
+    }
+
+  }
+
+/* For ultra wide screens */
+@media (min-width: 4000px) {
+
+    #profile-pic{
+    margin-left:40.5vw;
+}
+
+}

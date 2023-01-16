@@ -1,0 +1,77 @@
+/* Set font, text color, and background color of page */
+body{
+    font-family: 'Varela Round';
+    color: white;
+    background-color:#373c4a;
+}
+
+h1{
+    margin-top:20px; 
+    margin-bottom:20px; 
+    text-align:center;
+}
+
+a{
+    color:white;
+}
+
+a:hover{
+    opacity:80%;
+    color:white;
+    text-decoration: none;
+}
+
+/* Keeps videos in frame */
+video{
+    max-width:min-content;
+}
+
+/* Keeps images in frame */
+img{
+    max-width:min-content;
+}
+
+/* Flexbox container */
+#maincontent{
+    margin-top:80px;
+    display:flex;
+    gap:10px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Flexbox items */
+#content{
+    background-color:#1d2436;
+    border-radius:10px;
+    padding-left:10px;
+    padding-top:1px;
+    padding-right:10px;
+    padding-bottom:20px;
+    margin-top:10px;
+    min-width:70vw;
+    max-width:500px;
+    /* height:99vh; */
+}
+
+p{
+    margin-left: 10px;
+}
+
+h3{
+    margin-left: 10px; 
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+    #maincontent {
+      flex-direction: column;
+    }
+    video{
+        max-width:91vw;
+    }
+
+    img{
+        max-width:91vw;
+    }
+}
