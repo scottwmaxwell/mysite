@@ -13,7 +13,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('eisl@!8*CXZ"10)-2132lj+a/admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', portfolio_views.portfolio, name='portfolio'),
     path('projects/', projects_views.projects, name='projects'),
     path('projects/projectpost/<project_id>', projects_views.project_post, name='project_post'),

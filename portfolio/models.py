@@ -1,7 +1,7 @@
 from django.db import models
 
 class AboutMe(models.Model):
-	full_name =  models.CharField(default="Full Name", max_length=100, unique=False)
+	full_name = models.CharField(default="Full Name", max_length=100, unique=False)
 	title = models.CharField(default="Career Title", max_length=100, unique=False)
 	phone = models.CharField(default="Phone Number", max_length=100, unique=False)
 	email = models.CharField(default="email@email.com", max_length=100, unique=False)
