@@ -124,7 +124,7 @@
 					<strong><a href="{{ project.website_link }}">{{ project.title }}</a></strong><br>
 				{% else %}
 
-                <strong><a href="{{ request.path }}/projects/projectpost/{{ project.id }}">{{ project.title }}</a></strong><br>
+                <strong><a href="{{ request.path }}projects/projectpost/{{ project.id }}">{{ project.title }}</a></strong><br>
 				
 				{% endif %}
 
@@ -158,7 +158,7 @@
 							<strong><a href="{{ blog.website_link }}">{{ blog.title }}</a></strong><br>
 						{% else %}
 		
-						<strong><a href="{{ request.path }}/blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></strong><br>
+						<strong><a href="{{ request.path }}blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></strong><br>
 						
 						{% endif %}
 						<hr />

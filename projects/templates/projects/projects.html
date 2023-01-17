@@ -1,47 +1,36 @@
 {% extends 'portfolio/base.html' %}
 
 {% block content %}
-<style>
-.main{
-    min-height: 90vh;
-}
-</style>
 
 <head>
 {% load static %}
 <title>Scott Maxwell - Projects</title>
 </head>
 
-<body style="background-color:#828C83">
-    <div class='row m-0'>
+<div id="maincontent">
+    <div id="content">
+        <h1>Programming Projects</h1>
+        <div class="row cards">
 
-        <div class="col">
-        </div>
+            {% for post in posts %}
+            <div class="card hidden mx-auto mx-auto" style="width: 18rem; margin:20px; border-color:#575c65;">
+                <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body" style="background-color:#383e4b; color:white;">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <small class="card-text">{{ post.date_posted }}</small>
 
-        <div class="col-lg-8 p-3 mb-2 bg-dark text-light main" style="margin-top:60px; border-radius:10px;">
-            <br >
-            <h2>Projects</h2>
-            {% for post in projects %}
+                    <p class="card-text">{{ post.description }}</p>
+                    <br>
+                    <a href="{{ request.path }}projectpost/{{ post.id }}" class="btn float-right "
+                        style="color:white; background-color:rgb(24, 24, 64);">See post</a>
+                </div>
+            </div>
+            {% endfor %}
 
-		{% if post.content %}
-
-                	<hr >
-			{% if post.website_link %}
-				<h5> <a href="{{ post.website_link }}" target="_blank" style="color:white;">{{post.title|safe}}</a></h5>
-                		<small>{{post.date_posted|date:'M d, Y'}}</small>
-
-			{% else %}
-                		<h5> <a href="{{ request.path }}projectpost/{{ post.id }}" style="color:white;">{{post.title|safe}}</a></h5>
-                		<small>{{post.date_posted|date:'M d, Y'}}</small>
-			{% endif %}
-		{% endif %}
-	    {% endfor %}
-        </div>
-
-        <div class="col">
         </div>
     </div>
-
+</div>
 </body>
+
 
 {% endblock %}

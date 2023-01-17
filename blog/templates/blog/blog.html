@@ -12,13 +12,14 @@
         <h1>Blog Posts</h1>
         <div class="row cards">
 
-            {% for blog in blogposts %}
+            {% for post in posts %}
             <div class="card hidden mx-auto mx-auto" style="width: 18rem; margin:20px; border-color:#575c65;">
-                <img src="../images/blog.png" class="card-img-top" alt="...">
+                <img src="{{ post.image.url }}" class="card-img-top" alt="...">
                 <div class="card-body" style="background-color:#383e4b; color:white;">
-                    <h5 class="card-title">Blog Title <span class="badge bg-secondary">New</span></h5>
-                    <p class="card-text">Some quick example text to build on the card and show where the blog description would be.</p>
-                    <a href="blog_post.html" class="btn"
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <small class="card-text">{{ post.date_posted }}</small>
+                    <br>
+                    <a href="{{ request.path }}blogpost/{{ post.id }}" class="btn float-right "
                         style="color:white; background-color:rgb(24, 24, 64);">See post</a>
                 </div>
             </div>
@@ -27,8 +28,6 @@
         </div>
     </div>
 </div>
-
-<script src="../js/animate.js"></script>
 </body>
 
 {% endblock %}

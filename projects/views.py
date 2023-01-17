@@ -5,12 +5,12 @@ from portfolio.models import WebsiteIcon
 
 def projects(request):
 
-	project_posts = project.objects.all()[::-1]
+	posts = project.objects.all()[::-1]
 
 	website_icon = WebsiteIcon.objects.all()[0]
 
 	context = {
-		'projects': project_posts,
+		'posts': posts,
 		'website_icon': website_icon
 	}
 	

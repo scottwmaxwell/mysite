@@ -3,7 +3,7 @@ function reveal(){
 
     // Find the hidden cards
     var cards = $('div.card.hidden')
-
+    
     // Add transition delay for each hidden card
     var count = 0
     for(var card of cards){

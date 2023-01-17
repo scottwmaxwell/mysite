@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+    <base href="/" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,14 +26,16 @@
 
     <!-- Depending on path, use a specific stylesheet -->
     {% if 'blog' in request.path and 'blogpost' not in request.path %}
-        <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    <script type="text/javascript" src="{% static 'portfolio/js/animate.js' %}"></script>
     {% elif 'projects' in request.path and 'projectpost' %}
-        <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    <script type="text/javascript" src="{% static 'portfolio/js/animate.js' %}"></script>
     {% elif 'post' in request.path %}
-        <link rel="stylesheet" href="{% static 'portfolio/css/post.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/post.css' %}">
     {% else %}
-        <!-- Main stylesheet -->
-        <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
     {% endif %}
 
     <!-- Google Font -->
@@ -41,8 +44,8 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b69886d746.js" crossorigin="anonymous"></script>
 
-	<!-- For TinyMCE for AboutMe -->
-	<link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <!-- For TinyMCE for AboutMe -->
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
 
 </head>
 
