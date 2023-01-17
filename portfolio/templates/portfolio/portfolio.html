@@ -53,7 +53,7 @@
     <div class="heading">
 
         <div id="profilepic-id">
-            <img id='profile-pic' src="{{ about_me.image.url}}" />
+            <img id='profile-pic' src="{{ about_me.profile_pic.url }}" />
         </div>
 
         <div class="info">
@@ -116,7 +116,7 @@
 				{% for project in projectposts %}
 
                 <!-- Project Image -->
-                <img src="{{ project.image.url }}" height=50 width="50"
+                <img src="{{ project.image.url }}" height="50" width="50"
                     style="float:left; border-radius:10px; margin-right:10px;">
 
                 <!-- Project Title -->
@@ -150,8 +150,8 @@
                     <h2>Blog Posts</h2>
 					{% for blog in blogposts %}
 						<!-- Blog Image -->
-						<img src="{{ blog.image.url }}" height=50 width="50"
-						style="float:left; border-radius:10px; margin-right:10px;">
+						<img src="{{ blog.image.url }}" height=75
+						style="border-radius:10px; margin-right:10px;">
 		
 						<!-- Blog Title -->
 						{% if blog.website_link %}
@@ -161,9 +161,6 @@
 						<strong><a href="{{ request.path }}/blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></strong><br>
 						
 						{% endif %}
-		
-						<!-- Blog description -->
-						{{ blog.description }}
 						<hr />
 					{% endfor %}
                 </div>

@@ -45,3 +45,4 @@ class WorkExperience(models.Model):
 
 class WebsiteIcon(models.Model):
 	image = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
+	

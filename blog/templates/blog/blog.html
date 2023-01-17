@@ -2,44 +2,33 @@
 
 {% block content %}
 
-<style>
-.main{
-    min-height: 90vh;
-}
-</style>
-
 <head>
-{% load static %}
-<title>Scott Maxwell - Blogs</title>
+    <title>Scott Maxwell - Blogs</title>
 </head>
 
-<body style="background-color:#828C83;">
-    <div class='row m-0'>
 
-        <!-- Empty Space -->
-        <div class="col">
-        </div>
+<div id="maincontent">
+    <div id="content">
+        <h1>Blog Posts</h1>
+        <div class="row cards">
 
-        <div class="col-md-8 p-3 mb-2 bg-dark text-light p-3 main" style="margin-top:60px; border-radius:10px;">
-            <br >
-            <h2>Blog Posts</h2>
-            {% for post in posts %}
-                <hr >
-                {% if post.link %}
-                <h5><a href="{{ post.link }}" style="color:white;">{{post.title|safe}}</a></h5>
-                {% else %}
-                <h5><a href="{{ request.path }}blogpost/{{ post.id }}" style="color:white;">{{post.title|safe}}</a></h5>
-                {% endif %}
-                <small>{{ post.date_posted|date:'M d, Y' }}</small>
+            {% for blog in blogposts %}
+            <div class="card hidden mx-auto mx-auto" style="width: 18rem; margin:20px; border-color:#575c65;">
+                <img src="../images/blog.png" class="card-img-top" alt="...">
+                <div class="card-body" style="background-color:#383e4b; color:white;">
+                    <h5 class="card-title">Blog Title <span class="badge bg-secondary">New</span></h5>
+                    <p class="card-text">Some quick example text to build on the card and show where the blog description would be.</p>
+                    <a href="blog_post.html" class="btn"
+                        style="color:white; background-color:rgb(24, 24, 64);">See post</a>
+                </div>
+            </div>
             {% endfor %}
+
         </div>
-
-
-        <!-- Empty Space -->
-        <div class="col">
-        </div>
-
     </div>
+</div>
+
+<script src="../js/animate.js"></script>
 </body>
 
 {% endblock %}

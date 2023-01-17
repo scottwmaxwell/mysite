@@ -23,8 +23,17 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+    <!-- Depending on path, use a specific stylesheet -->
+    {% if 'blog' in request.path and 'blogpost' not in request.path %}
+        <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    {% elif 'projects' in request.path and 'projectpost' %}
+        <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
+    {% elif 'post' in request.path %}
+        <link rel="stylesheet" href="{% static 'portfolio/css/post.css' %}">
+    {% else %}
+        <!-- Main stylesheet -->
+        <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+    {% endif %}
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
