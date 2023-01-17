@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'portfolio',
     'blog',
     'projects',
-    'photography',
 ]
 
 MIDDLEWARE = [
