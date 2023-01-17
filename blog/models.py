@@ -6,6 +6,7 @@ class blogpost(models.Model):
    content = models.TextField(blank=True)
    date_posted = models.DateTimeField(default=timezone.now)
    link = models.CharField(max_length=200, blank=True)
+   image = models.ImageField(upload_to='blogposts', blank=True)
 
    def __str__(self):
        return str(self.title)

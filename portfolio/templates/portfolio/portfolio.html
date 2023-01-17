@@ -16,9 +16,7 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-light">
-
-                <!-- I removed the header and footer as I didn't like the white line that was created -->
-
+				
                 <div class="modal-body">
 
                     <!-- X button -->
@@ -55,7 +53,7 @@
     <div class="heading">
 
         <div id="profilepic-id">
-            <img id='profile-pic' src="../images/profile.png" />
+            <img id='profile-pic' src="{{ about_me.image.url}}" />
         </div>
 
         <div class="info">
@@ -94,34 +92,22 @@
                 <p>{{ about_me.content |safe }}</p>
             </div>
 
+			{% if about_me.work_experience %}
             <!-- Div for work experience -->
             <div id="content">
                 <h2 style="padding-top:10px;">Work Experience</h2>
 
+				{% for wrkexp in workexperience %}
                 <!-- Work experience title -->
-                <strong id="wrkexp-title">Software Support Technician at <i id="wrkexp-location">Respondus</i></strong>
-                <p id="wrkexp-date" style="color:gray;">July 2020 - Present (2 years)</p>
+                <strong id="wrkexp-title">{{ wrkexp.title }} at <i id="wrkexp-location">{{ wrkexp.location }}</i></strong>
+                <p id="wrkexp-date" style="color:gray;">{{wrkexp.start_date}} - {{wrkexp.end_date}} ({{wrkexp.total_time}})</p>
 
                 <!-- Bullet list of duties/accomplishments -->
-                <ul>
-                    <li>Sustained customers with concise technical support for complex problems</li>
-                    <li>Supported developers in troubleshooting issues</li>
-                    <li>Maintained integrity of product releases through quality assurance</li>
-                    <li>Wrote & published knowledge base articles</li>
-                </ul>
+				<p>{{ wrkexp.content |safe }}</p>
                 <hr />
-
-                <!-- Work experience title -->
-                <strong id="wrkexp-title">Live Chat Technician at <i id="wrkexp-location">Respondus</i></strong>
-                <p id="wrkexp-date" style="color:gray;">August 2019 - July 2020 (1 year)</p>
-
-                <!-- Bullet list of duties/accomplishments -->
-                <ul>
-                    <li>Delivered support for an online exam proctoring service</li>
-                    <li>Corrected webcam, microphone, and network problems</li>
-                    <li>Sustained multiple chats simultaneously</li>
-                </ul>
+				{% endfor %}
             </div>
+			{% endif %}
 
             <!-- Div for programming projects -->
             <div id="content">
@@ -130,17 +116,15 @@
 				{% for project in projectposts %}
 
                 <!-- Project Image -->
-                <img src="{{ project.image }}" height=50 width="50"
+                <img src="{{ project.image.url }}" height=50 width="50"
                     style="float:left; border-radius:10px; margin-right:10px;">
 
                 <!-- Project Title -->
 				{% if project.website_link %}
-					<strong><a href="{{ project.website_link }}">{{ project.title  }}<span
-						class="badge bg-secondary">New</span></a></strong><br>
+					<strong><a href="{{ project.website_link }}">{{ project.title }}</a></strong><br>
 				{% else %}
 
-                <strong><a href="{{ request.path }}/post/{{ project.id }}">{{ project.title }}<span
-                            class="badge bg-secondary">New</span></a></strong><br>
+                <strong><a href="{{ request.path }}/projects/projectpost/{{ project.id }}">{{ project.title }}</a></strong><br>
 				
 				{% endif %}
 
@@ -149,6 +133,7 @@
                 <hr />
 
 				{% endfor %}
+			</div>
 
             <div id="content">
                 <div class="p-3 mb-2" style="border-radius:10px; overflow:hidden;">
@@ -163,8 +148,23 @@
 			<div id="content">
                 <div class="p-3 mb-2" style="border-radius:10px; overflow:hidden;">
                     <h2>Blog Posts</h2>
-					{% for blog in blogs %}
+					{% for blog in blogposts %}
+						<!-- Blog Image -->
+						<img src="{{ blog.image.url }}" height=50 width="50"
+						style="float:left; border-radius:10px; margin-right:10px;">
+		
+						<!-- Blog Title -->
+						{% if blog.website_link %}
+							<strong><a href="{{ blog.website_link }}">{{ blog.title }}</a></strong><br>
+						{% else %}
+		
+						<strong><a href="{{ request.path }}/blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></strong><br>
 						
+						{% endif %}
+		
+						<!-- Blog description -->
+						{{ blog.description }}
+						<hr />
 					{% endfor %}
                 </div>
             </div>
@@ -175,56 +175,30 @@
         <div id="content">
             <h4 style="padding-top:10px;">Education & Certifications</h4>
 
+			{% for cert in certifications %}
             <!-- Education Image + Link -->
-            <a href="https://www.gcu.edu/degree-programs/bs-software-development" target="_blank">
-                <img src="../images/GCU Logo.jpeg" height=50 width="50"
+            <a href="{{ cert.link }}" target="_blank">
+                <img src="{{ cert.image.url }}" height=50 width="50"
                     style="float:left; border-radius:10px; margin-right:10px;">
             </a>
 
             <!-- Name, Date, Cert/Degree -->
-            <strong><a href="https://www.gcu.edu/degree-programs/bs-software-development" target="_blank">Grand
-                    Canyon
-                    University</a> <i id="date" style="color:gray;">2022-2024 (expected)</i></strong><br>
-            <small>BS in Software Development</small>
+            <strong><a href="{{ cert.link }}" target="_blank">{{ cert.location }}</a> <i id="date" style="color:gray;">{{ cert.date_acheived}}</i></strong><br>
+            <small>{{ cert.title }}</small>
 
             <hr />
-
-            <!-- Education Image + Link -->
-            <a href="https://www.bloomtech.com/" target="_blank">
-                <img src="../images/BloomTech Logo.png" height=50 width="50"
-                    style="float:left; border-radius:10px; margin-right:10px;">
-            </a>
-
-            <!-- Name, Date, Cert/Degree -->
-            <strong><a href="https://www.bloomtech.com/" target="_blank">BloomTech</a> <i id="date"
-                    style="color:gray;">2019-2020</i></strong><br>
-            <small>Data Science & Machine Learning</small>
-
-            <hr />
-            <!-- Education Image + Link-->
-            <a href="https://www.cgc.edu/" target="_blank">
-                <img src="../images/CGCC Logo.jpeg" height=50 width="50"
-                    style="float:left; border-radius:10px; margin-right:10px;">
-            </a>
-            <!-- Name, Date, Cert/Degree -->
-            <strong><a href="https://www.cgc.edu/" target="_blank">CGCC</a> <i id="date" style="color:gray;">Aug 9,
-                    2022</i></strong><br>
-            <small>Associate of Science</small>
+			{% endfor %}
         </div>
 
         <div id="content">
             <h4 style="padding-top:10px;">Skills</h4>
-            <ul>
-                <li>Python</li>
-                <li>Java</li>
-                <li>Web Scraping</li>
-                <li>Machine Learning</li>
-                <li>Data Engineering</li>
-                <li>HTML, CSS, JavaScript</li>
-                <li>PostgreSQL, MongoDB</li>
-                <li>Linode, AWS</li>
+            <ul style="list-style-type: none;">
+				{% for skill in skills %}
+                <li>{% if skill.image %}<img height="15" width="15" src="{{ skill.image.url }}">{% endif %} {{ skill.title }}</li>
+				{% endfor %}
             </ul>
         </div>
+		
     </div>
 
 

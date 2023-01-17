@@ -20,7 +20,6 @@ urlpatterns = [
     path('blog/', blog_views.blog, name = 'blog'),
     path('blog/blogpost/<blog_id>', blog_views.blog_post, name = 'blog_post'),
     path('photography/', photography_views.photography, name= 'photography'),
-    path('projects/chrome_extensions', projects_views.chrome_extensions, name= 'chrome_extensions'),
     path('photography/photo/<photo_id>', photography_views.photo, name='photo'),
     path('tinymce/',include('tinymce.urls')),
 ]

@@ -12,20 +12,3 @@ class project(models.Model):
 
 	def __str__(self):
 		return str(self.title)
-
-
-# Where the main extension resides
-class chrome_extension(models.Model):
-	title = models.CharField(max_length=100, unique=True)
-	file = models.FileField(upload_to='application', blank=True)
-
-	def __str__(self):
-		return str(self.title)
-
-# Where the XML file
-class chrome_extension_update(models.Model):
-	title = models.CharField(max_length=100, unique=True)
-	xml_file = models.FileField(upload_to='chrome_extension_updates', blank=True)
-
-	def __str__(self):
-		return str(self.title)

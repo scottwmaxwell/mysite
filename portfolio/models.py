@@ -14,17 +14,18 @@ class AboutMe(models.Model):
 	work_experience = models.BooleanField(default=True)
 
 class Certification(models.Model):
-	title = models.CharField(max_length=100, unique=True)
-	description = models.TextField(blank=True)
-	location = models.CharField(max_length=100, blank=True)
-	link = models.CharField(max_length=200, blank=True)
-	date_acheived = models.CharField(max_length=200, blank=True)
-	image = models.ImageField(upload_to='certification_pics', blank=True)
+	title = models.CharField(max_length=100, unique=False)
+	description = models.TextField(blank=False)
+	location = models.CharField(max_length=100, blank=False)
+	link = models.CharField(max_length=200, blank=False)
+	date_acheived = models.CharField(max_length=200, blank=False)
+	image = models.ImageField(upload_to='certification_pics', blank=False)
 
 	def __str__(self):
 	   return str(self.title)
 
 class Skill(models.Model):
+	image = models.ImageField(default='default.png', upload_to='skills_pics', blank=True)
 	title = models.CharField(max_length=200, blank=True)
 
 	def __str__(self):
