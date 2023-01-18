@@ -20,7 +20,7 @@
                     <h5 class="card-title">{{ post.title }}</h5>
                     
                     <br>
-                    {% if post.website_link %}
+                    {% if post.link %}
                         <a href="{{ post.link }}" target="_blank" class="btn float-right">See Post</a>
                     {% else %}
                         <a href="{{ request.path }}blogpost/{{ post.id }}" class="btn float-right">See Post</a>
