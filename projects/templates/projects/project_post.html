@@ -19,7 +19,7 @@
             <small><i>{{project.date_posted|date:'M d, Y'}}<i></small>
             {% if project.code_link %}
                 <br>
-                <a><button class="btn">See Code &lt;\&gt;</button></a>
+                <a target="_blank" href="{{ project.code_link }}"><button class="btn">See Code &lt;\&gt;</button></a>
             {% endif %}
             <p>{{project.content|safe}}</p>
 
