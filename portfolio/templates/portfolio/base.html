@@ -28,7 +28,7 @@
     {% if 'blog' in request.path and 'blogpost' not in request.path %}
     <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
     <script type="text/javascript" src="{% static 'portfolio/js/animate.js' %}"></script>
-    {% elif 'projects' in request.path and 'projectpost' %}
+    {% elif 'projects' in request.path and 'post' not in request.path %}
     <link rel="stylesheet" href="{% static 'portfolio/css/post-listing.css' %}">
     <script type="text/javascript" src="{% static 'portfolio/js/animate.js' %}"></script>
     {% elif 'post' in request.path %}

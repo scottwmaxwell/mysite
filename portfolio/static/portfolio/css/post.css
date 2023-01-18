@@ -2,7 +2,7 @@
 body{
     font-family: 'Varela Round';
     color: white;
-    background-color:#373c4a;
+    background-color:#636a63;
 }
 
 h1{
@@ -28,8 +28,21 @@ video{
 
 /* Keeps images in frame */
 img{
-    max-width:min-content;
+    max-width:50vw;
 }
+
+.btn{
+    color:white; 
+    background-color:rgb(64, 106, 64);
+    transition:1s;
+    margin-bottom:10px;
+    margin-top:20px;
+ }
+ 
+ .btn:hover{
+     background-color:#636a63;
+     color:white;
+ }
 
 /* Flexbox container */
 #maincontent{
@@ -38,11 +51,13 @@ img{
     gap:10px;
     flex-direction: row;
     justify-content: center;
+    padding-left: 5px;
+    padding-right:5px;
 }
 
 /* Flexbox items */
 #content{
-    background-color:#1d2436;
+    background-color:#212529;
     border-radius:10px;
     padding-left:10px;
     padding-top:1px;
@@ -51,7 +66,8 @@ img{
     margin-top:10px;
     min-width:70vw;
     max-width:500px;
-    /* height:99vh; */
+    min-height:88vh;
+    margin-bottom:10px;
 }
 
 p{
@@ -62,16 +78,28 @@ h3{
     margin-left: 10px; 
 }
 
+iframe{
+    align-self: center;
+}
+
 /* For mobile */
 @media (max-width: 600px) {
     #maincontent {
       flex-direction: column;
     }
     video{
-        max-width:91vw;
+        max-width:85vw;
+    }
+
+    iframe{
+        max-width:85vw;
     }
 
     img{
-        max-width:91vw;
+        max-width:85vw;
+    }
+
+    #content{
+        max-width:96vw;
     }
 }

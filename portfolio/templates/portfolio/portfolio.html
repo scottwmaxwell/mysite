@@ -10,7 +10,6 @@
 </head>	
 
 <body>
-
     <!-- Modal that appears for contact me button -->
     <div class="modal fade" id="contactMeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -68,14 +67,16 @@
                 <i class="fa fa-envelope-o" aria-hidden="true" style="padding-left:6px;"></i>
             </button>
 
-            <!-- Social Links -->
-            <a id="icon" href="https://github.com/{{ about_me.github_handle }}" target="_blank">
-                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
-            </a>
+            <div style="float:left; margin-top:4px;">
+                <!-- Social Links -->
+                <a id="icon" href="https://github.com/{{ about_me.github_handle }}" target="_blank">
+                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                </a>
 
-            <a id="icon" href="{{ about_me.linkedin_url }}" target="_blank">
-                <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
-            </a>
+                <a id="icon" href="{{ about_me.linkedin_url }}" target="_blank">
+                    <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
 
         </div>
     </div>
@@ -87,8 +88,8 @@
         <div id="panel1">
 
             <!-- About me -->
-            <div id="content">
-                <h2 style="padding-top:10px;">About Me</h2>
+            <div class="p-3 mb-2" id="content">
+                <h3 style="padding-top:10px;">About Me</h3>
                 <p>{{ about_me.content |safe }}</p>
             </div>
 
@@ -110,28 +111,64 @@
 			{% endif %}
 
             <!-- Div for programming projects -->
-            <div id="content">
-                <h2 style="padding-top:10px;">Recent Programming Projects</h2>
+            <div class="p-3 mb-2" id="content">
+
+                <h3 style="padding-top:10px;">Featured Project</h3>
+
+                {% for project in projectposts%}
+                    {% if project.featured %}
+
+                        <div class="featured justify-content-md-center">
+                            <a href="{% if project.website_link %}{{ project.website_link}}{% else %}{{ request.path }}projects/projectpost/{{ project.id }} {% endif %}">
+                                <img  class="featured-img" src="{{ project.image.url }}">
+                            </a>
+                            
+                            {% if project.website_link %}
+                                <h4 style="margin-top:10px;"><a href="{{ project.website_link }}">{{ project.title }}</a></h4>
+                            {% else %}
+                                <h4 style="margin-top:10px;"><a href="{{ request.path }}projects/projectpost/{{ project.id }}">{{ project.title }}</a></h4>
+                            {% endif %}
+                            
+                            <br>
+                            <p>{{project.description}}</p>
+                        </div>
+                        
+                        
+                    {% endif %}
+                {% endfor %}
+
+                <h4 style="padding-top:10px;">Other Programming Projects</h4>
 
 				{% for project in projectposts %}
+                    {% if not project.featured %}
+                        <div class="post">
+                            <!-- Project Image -->
+                            {% if project.website_link %}
+                                <a href="{{ project.website_link }}">
+                                    <img src="{{ project.image.url }}" height="60"
+                                    style="float:left; border-radius:10px; margin-left:10px; margin-right:10px;">
+                                </a>
+                            {% else %}
+                                <a href="{{ request.path }}projects/projectpost/{{ project.id }}">
+                                    <img src="{{ project.image.url }}" height="60"
+                                    style="float:left; border-radius:10px; margin-left:10px; margin-right:10px;">
+                                </a>
+                            {% endif %}
+                            <!-- Project Title -->
+                            {% if project.website_link %}
+                                <h5><a href="{{ project.website_link }}">{{ project.title }}</a></h5>
+                            {% else %}
 
-                <!-- Project Image -->
-                <img src="{{ project.image.url }}" height="50" width="50"
-                    style="float:left; border-radius:10px; margin-right:10px;">
+                            <h5><a href="{{ request.path }}projects/projectpost/{{ project.id }}">{{ project.title }}</a></h5>
+                            {% endif %}
 
-                <!-- Project Title -->
-				{% if project.website_link %}
-					<strong><a href="{{ project.website_link }}">{{ project.title }}</a></strong><br>
-				{% else %}
+                        <!-- Project description -->
+                        {{ project.description }}
 
-                <strong><a href="{{ request.path }}projects/projectpost/{{ project.id }}">{{ project.title }}</a></strong><br>
-				
-				{% endif %}
 
-                <!-- Project description -->
-                {{ project.description }}
-                <hr />
-
+                        </div>
+                        <hr />
+                    {% endif %}
 				{% endfor %}
 			</div>
 
@@ -150,16 +187,23 @@
                     <h2>Blog Posts</h2>
 					{% for blog in blogposts %}
 						<!-- Blog Image -->
-						<img src="{{ blog.image.url }}" height=75
-						style="border-radius:10px; margin-right:10px;">
+                        {% if blog.website_link %}
+                            <a href="{{ blog.website_link }}">
+                            <img src="{{ blog.image.url }}" height=75
+                            style="float:left; border-radius:10px; margin-right:10px;">
+                            </a>
+                        {% else %}
+                            <a href="{{ request.path }}blog/blogpost/{{ blog.id }}">
+                            <img src="{{ blog.image.url }}" height=75
+                            style="float:left; border-radius:10px; margin-right:10px;">
+                            </a>
+                        {% endif %}
 		
 						<!-- Blog Title -->
 						{% if blog.website_link %}
-							<strong><a href="{{ blog.website_link }}">{{ blog.title }}</a></strong><br>
+							<h5><a href="{{ blog.website_link }}">{{ blog.title }}</a></h5><br>
 						{% else %}
-		
-						<strong><a href="{{ request.path }}blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></strong><br>
-						
+						<h5><a href="{{ request.path }}blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></h5><br>	
 						{% endif %}
 						<hr />
 					{% endfor %}
@@ -191,7 +235,11 @@
             <h4 style="padding-top:10px;">Skills</h4>
             <ul style="list-style-type: none;">
 				{% for skill in skills %}
-                <li>{% if skill.image %}<img height="15" width="15" src="{{ skill.image.url }}">{% endif %} {{ skill.title }}</li>
+                    {% if skill.image %}
+                        <li><img height="15" width="15" src="{{ skill.image.url }}"> {{ skill.title }}</li>
+                    {% else %}
+                        <li style="margin-left:19px;"> {{ skill.title }}</li>
+                    {% endif %} 
 				{% endfor %}
             </ul>
         </div>

@@ -25,7 +25,7 @@ class Certification(models.Model):
 	   return str(self.title)
 
 class Skill(models.Model):
-	image = models.ImageField(default='default.png', upload_to='skills_pics', blank=True)
+	image = models.ImageField(upload_to='skills_pics', blank=True)
 	title = models.CharField(max_length=200, blank=True)
 
 	def __str__(self):

@@ -2,21 +2,7 @@
 
 {% block content %}
 
-<style>
-.main{
-    min-height: 90vh;
-}
-a {
-    color:#47754d;
-}
-iframe{
-    max-width:90vw;
-}
-img{
-    max-width:90vw;
-}
 
-</style>
 
 
 <head>
@@ -25,25 +11,15 @@ img{
 <title>Scott Maxwell - {{text.title}}</title>
 </head>
 
-<body style="background-color:#828C83">
-    <div class='row m-0'>
+<body>
 
-        <div class="col">
-        </div>
+    <!-- Main content of page -->
+    <div id="maincontent">
+        <div id="content">
 
-        <div class="col-md-8 p-3 mb-2 bg-dark text-light main" style="margin-top:60px; border-radius:10px;">
-            <br >
-            <h2 style="color:white;"> {{text.title|safe}} </h2>
-            <small>{{text.date_posted|date:'M d, Y'}}</small>
-            <p> {{text.content|safe}}  </p>
-
-            <br>
-            <a href="{% url 'blog' %}" style="float:left;"><i class="icon-arrow-left"></i> Back to blog posts</a>
-        </div>
-
-        <div class="col">
-        </div>
-
+            <h1>{{text.title|safe}}</h1>
+            <small><i>{{text.date_posted|date:'M d, Y'}}<i></small>
+            <p>{{text.content|safe}}</p>
 
 </body>
 <script src="{% static 'tinymce/js/prism.js' %}"></script>
