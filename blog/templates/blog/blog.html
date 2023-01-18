@@ -21,9 +21,9 @@
                     
                     <br>
                     {% if post.website_link %}
-                    <a href="{{ post.website_link }}" target="_blank" class="btn float-right">See Post</a>
+                        <a href="{{ post.link }}" target="_blank" class="btn float-right">See Post</a>
                     {% else %}
-                    <a href="{{ request.path }}blogpost/{{ post.id }}" class="btn float-right">See Post</a>
+                        <a href="{{ request.path }}blogpost/{{ post.id }}" class="btn float-right">See Post</a>
                     {% endif %}
 
                 </div>
