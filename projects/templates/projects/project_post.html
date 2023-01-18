@@ -16,7 +16,7 @@
         <div id="content">
 
             <h1>{{project.title|safe}}</h1>
-            <small><i>{{project.date_posted|date:'M d, Y'}}<i></small>
+            <small><i>{{project.date_posted|date:'M d, Y'}}</i></small>
             {% if project.code_link %}
                 <br>
                 <a target="_blank" href="{{ project.code_link }}"><button class="btn">See Code &lt;\&gt;</button></a>
