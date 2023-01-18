@@ -144,7 +144,7 @@
                         <div class="post">
                             <!-- Project Image -->
                             {% if project.website_link %}
-                                <a href="{{ project.website_link }}">
+                                <a target="_blank" href="{{ project.website_link }}">
                                     <img src="{{ project.image.url }}" height="60"
                                     style="float:left; border-radius:10px; margin-left:10px; margin-right:10px;">
                                 </a>
@@ -156,7 +156,7 @@
                             {% endif %}
                             <!-- Project Title -->
                             {% if project.website_link %}
-                                <h5><a href="{{ project.website_link }}">{{ project.title }}</a></h5>
+                                <h5><a target="_blank" href="{{ project.website_link }}">{{ project.title }}</a></h5>
                             {% else %}
 
                             <h5><a href="{{ request.path }}projects/projectpost/{{ project.id }}">{{ project.title }}</a></h5>
@@ -187,8 +187,8 @@
                     <h3>Blog Posts</h3>
 					{% for blog in blogposts %}
 						<!-- Blog Image -->
-                        {% if blog.website_link %}
-                            <a href="{{ blog.website_link }}">
+                        {% if blog.link %}
+                            <a target="_blank" href="{{ blog.link }}">
                             <img src="{{ blog.image.url }}" height=75
                             style="float:left; border-radius:10px; margin-right:10px;">
                             </a>
@@ -201,7 +201,7 @@
 		
 						<!-- Blog Title -->
 						{% if blog.link %}
-							<h5><a href="{{ blog.link }}">{{ blog.title }}</a></h5><br>
+							<h5><a target="_blank" href="{{ blog.link }}">{{ blog.title }}</a></h5><br>
 						{% else %}
 						<h5><a href="{{ request.path }}blog/blogpost/{{ blog.id }}">{{ blog.title }}</a></h5><br>	
 						{% endif %}
