@@ -187,6 +187,11 @@ a:hover{
         max-width: 95vw;
     }
 
+    .calendar{
+        border-radius:10px; 
+        overflow:scroll;
+    }
+
   }
 
 /* For ultra wide screens */
