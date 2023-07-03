@@ -7,6 +7,7 @@ class AboutMe(models.Model):
 	email = models.CharField(default="email@email.com", max_length=100, unique=False)
 	github_handle = models.CharField(default="mygithubhandle", max_length=100, unique=False)
 	linkedin_url = models.CharField(default='https://linkedin.com/yourlinkedin', max_length=300, unique=False)
+	mastadon_url = models.CharField(max_length=300, unique=False, blank=True)
 	location = models.CharField(default="495 Your address here", max_length=100, unique=False)
 	content = models.TextField(blank=True)
 	profile_pic = models.ImageField(default='default.png', upload_to='profile_pics', blank=True)
