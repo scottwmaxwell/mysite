@@ -7,7 +7,7 @@ import json
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURIFTY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG == False:
     with open('/etc/config.json') as config_file:
